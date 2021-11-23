@@ -435,7 +435,10 @@ $(() => {
   $(document).on('click', 'button.button-longrunning', function () {
     const $self = $(this);
     const $replacementElem = $('em', $self);
-    const reEnableAfter = 30;
+    let reEnableAfter = 30;
+    if ($self.data('reenableafter')) {
+      reEnableAfter = parseInt($self.data('reenableafter'), 10)
+    }
     const dataName = 'disabledtimeout';
 
     // eslint-disable-next-line func-names
